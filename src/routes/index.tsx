@@ -29,7 +29,6 @@ const features = [
   { to: "/face", icon: Sparkles, title: "Face & forehead", desc: "Physiognomy insights from a selfie." },
   { to: "/horoscope", icon: Stars, title: "Daily horoscope", desc: "Personal energy for today." },
   { to: "/tarot", icon: Moon, title: "Tarot card", desc: "Pull your card of the day." },
-  { to: "/compatibility", icon: Heart, title: "Compatibility", desc: "How your signs align." },
 ] as const;
 
 function Index() {
@@ -79,30 +78,30 @@ function Index() {
       </section>
 
       <section className="mt-8 px-6">
-        <h2 className="mb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+        <h2 className="mb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Readings
         </h2>
-        <div className="space-y-3">
+        <div className="grid grid-cols-2 gap-4">
           {features.map(({ to, icon: Icon, title, desc }) => (
             <Link
               key={to}
               to={to}
-              className="group flex items-center gap-4 rounded-2xl glass p-5 transition-colors hover:bg-accent/40"
+              className="group flex flex-col items-center justify-between rounded-2xl glass p-5 transition-colors hover:bg-accent/40 aspect-square"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary">
-                <Icon className="h-5 w-5" strokeWidth={1.6} />
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary">
+                <Icon className="h-6 w-6" strokeWidth={1.6} />
               </div>
-              <div className="flex-1">
-                <p className="font-display text-lg leading-tight">{title}</p>
-                <p className="text-sm text-muted-foreground">{desc}</p>
+              <div className="text-center mt-3">
+                <p className="font-display text-base leading-tight">{title}</p>
+                <p className="text-xs text-muted-foreground mt-1">{desc}</p>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 mt-2" />
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="mt-8 px-6">
+      <section className="mt-8 px-6 pb-12">
         <h2 className="mb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Recent
         </h2>

@@ -17,7 +17,7 @@ export function MobileShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex h-screen justify-center overflow-hidden">
       <div className="relative flex w-full max-w-[480px] flex-col overflow-hidden">
-        <main className="flex-1 overflow-y-auto pb-28">{children}</main>
+        <main className="flex-1 overflow-y-auto pb-40">{children}</main>
 
         <nav className="fixed bottom-3 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[460px] -translate-x-1/2 rounded-full glass-nav shadow-soft">
           <ul className="flex items-center justify-around px-2 py-2">
