@@ -67,8 +67,8 @@ function Onboarding() {
               <span
                 key={i}
                 className={cn(
-                  "h-1 w-6 rounded-full transition-colors",
-                  i <= step ? "bg-foreground" : "bg-border",
+                  "h-1.5 w-7 rounded-full transition-colors",
+                  i <= step ? "bg-accent" : "bg-white/10",
                 )}
               />
             ))}
@@ -76,7 +76,7 @@ function Onboarding() {
           {step < 3 && (
             <button
               onClick={() => setStep(3)}
-              className="text-xs text-muted-foreground hover:text-foreground"
+              className="text-xs font-semibold text-muted-foreground hover:text-accent transition-colors"
             >
               Skip
             </button>
@@ -86,23 +86,23 @@ function Onboarding() {
         <div className="flex flex-1 flex-col justify-center">
           {step < 3 ? (
             <div key={step} className="animate-in fade-in slide-in-from-bottom-4">
-              <div className="mb-8 inline-flex h-16 w-16 items-center justify-center rounded-3xl gradient-cosmic shadow-glow">
+              <div className="mb-10 inline-flex h-18 w-18 items-center justify-center rounded-3xl gradient-premium shadow-glow">
                 {(() => {
                   const I = steps[step].icon;
                   return <I className="h-7 w-7 text-white" strokeWidth={1.5} />;
                 })()}
               </div>
-              <h1 className="font-display text-4xl leading-[1.05]">
+              <h1 className="font-display text-5xl font-semibold leading-[1.1]">
                 {steps[step].title}
               </h1>
-              <p className="mt-4 max-w-xs text-base leading-relaxed text-muted-foreground">
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-muted-foreground">
                 {steps[step].body}
               </p>
             </div>
           ) : (
             <div className="animate-in fade-in slide-in-from-bottom-4 space-y-5">
-              <h1 className="font-display text-4xl leading-[1.05]">Your details</h1>
-              <p className="text-sm text-muted-foreground">
+              <h1 className="font-display text-5xl font-semibold leading-[1.1]">Your details</h1>
+              <p className="text-base text-muted-foreground">
                 Used only on this device. Nothing is uploaded.
               </p>
 
@@ -112,7 +112,7 @@ function Onboarding() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
-                    className="h-12 rounded-xl border-border bg-card"
+                    className="h-12 rounded-xl border-white/10 bg-white/5 focus:border-accent/50 focus:bg-white/10"
                   />
                 </Field>
                 <Field label="Birth date">
@@ -120,7 +120,7 @@ function Onboarding() {
                     type="date"
                     value={birthDate}
                     onChange={(e) => setBirthDate(e.target.value)}
-                    className="h-12 rounded-xl border-border bg-card"
+                    className="h-12 rounded-xl border-white/10 bg-white/5 focus:border-accent/50 focus:bg-white/10"
                   />
                 </Field>
                 <div className="grid grid-cols-2 gap-3">
@@ -129,7 +129,7 @@ function Onboarding() {
                       type="time"
                       value={birthTime}
                       onChange={(e) => setBirthTime(e.target.value)}
-                      className="h-12 rounded-xl border-border bg-card"
+                      className="h-12 rounded-xl border-white/10 bg-white/5 focus:border-accent/50 focus:bg-white/10"
                     />
                   </Field>
                   <Field label="Place">
@@ -137,7 +137,7 @@ function Onboarding() {
                       value={birthPlace}
                       onChange={(e) => setBirthPlace(e.target.value)}
                       placeholder="City"
-                      className="h-12 rounded-xl border-border bg-card"
+                      className="h-12 rounded-xl border-white/10 bg-white/5 focus:border-accent/50 focus:bg-white/10"
                     />
                   </Field>
                 </div>
@@ -149,18 +149,16 @@ function Onboarding() {
         <div className="pt-6">
           {step < 3 ? (
             <Button
-              size="lg"
               onClick={() => setStep(step + 1)}
-              className="h-12 w-full rounded-full gradient-cosmic text-white hover:opacity-90"
+              className="h-12 w-full rounded-full gradient-premium text-white font-semibold hover:shadow-glow transition-all"
             >
               Continue <ArrowRight className="ml-1 h-4 w-4" />
             </Button>
           ) : (
             <Button
-              size="lg"
               onClick={finish}
               disabled={!birthDate}
-              className="h-12 w-full rounded-full gradient-cosmic text-white hover:opacity-90 disabled:opacity-40"
+              className="h-12 w-full rounded-full gradient-premium text-white font-semibold hover:shadow-glow disabled:opacity-40 transition-all"
             >
               Begin reading <Sparkles className="ml-1 h-4 w-4" />
             </Button>
@@ -174,7 +172,7 @@ function Onboarding() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+      <span className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
         {label}
       </span>
       {children}

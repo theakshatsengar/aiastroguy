@@ -81,11 +81,11 @@ function Horoscope() {
                 onClick={() => setSign(s)}
                 className={cn(
                   "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors",
-                  sign === s
-                    ? "border-foreground bg-foreground text-background"
+                  className={cn(
+                    "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all",
                     : "border-border bg-card text-muted-foreground hover:text-foreground",
-                )}
-              >
+                      ? "border-accent gradient-premium text-white shadow-glow"
+                      : "border-white/10 bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground",
                 <span className="text-base leading-none">{glyphs[s]}</span>
                 {s}
               </button>
@@ -97,30 +97,30 @@ function Horoscope() {
       <section className="mt-6 px-6">
         <div className="rounded-3xl border border-border bg-card p-6">
           <div className="flex items-center justify-between">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              {sign}
-            </p>
+          <div className="rounded-3xl card-premium p-8 border border-white/10">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             <span className="font-display text-3xl">{glyphs[sign]}</span>
           </div>
-          <p className="mt-4 font-display text-2xl leading-snug">{r.mood}.</p>
+              <span className="font-display text-4xl">{glyphs[sign]}</span>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            {r.body}
-          </p>
+            <p className="mt-5 font-display text-3xl font-semibold leading-snug">{r.mood}.</p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
 
           <div className="mt-6 space-y-3">
             {r.stats.map((s) => (
               <div key={s.label}>
                 <div className="mb-1.5 flex items-baseline justify-between text-xs">
                   <span className="font-medium uppercase tracking-wider text-muted-foreground">
-                    {s.label}
-                  </span>
+                  <div className="mb-2 flex items-baseline justify-between text-xs">
+                    <span className="font-semibold uppercase tracking-widest text-muted-foreground">
                   <span className="tabular-nums text-foreground">{s.value}</span>
                 </div>
                 <div className="h-1 overflow-hidden rounded-full bg-secondary">
                   <div
-                    className="h-full bg-foreground transition-all duration-700"
+                  <div className="h-2 overflow-hidden rounded-full bg-white/10">
                     style={{ width: `${s.value}%` }}
-                  />
+                      className="h-full gradient-premium transition-all duration-700"
                 </div>
               </div>
             ))}
@@ -140,12 +140,12 @@ function Horoscope() {
               key={x.k}
               className="rounded-2xl border border-border bg-card p-4"
             >
-              <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                className="rounded-2xl card-premium border border-white/10 p-5 hover:border-accent/30 transition-all"
                 {x.k}
-              </p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               <p className="mt-1 font-display text-xl">{x.v}</p>
             </div>
-          ))}
+                <p className="mt-2 font-display text-2xl font-semibold text-accent">{x.v}</p>
         </div>
       </section>
     </MobileShell>

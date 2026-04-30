@@ -45,13 +45,13 @@ function Compatibility() {
       <div className="px-6">
         <div className="grid grid-cols-2 gap-3">
           {([["You", a, setA], ["Them", b, setB]] as const).map(([label, val, setVal]) => (
-            <div key={label} className="rounded-2xl glass p-4">
-              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
-              <p className="mt-2 font-display text-3xl">{glyphs[val]} <span className="text-base">{val}</span></p>
+            <div key={label} className="rounded-2xl card-premium p-5 border border-white/10">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{label}</p>
+              <p className="mt-3 font-display text-4xl font-semibold">{glyphs[val]} <span className="text-lg text-accent">{val}</span></p>
               <select
                 value={val}
                 onChange={(e) => setVal(e.target.value)}
-                className="mt-3 w-full rounded-lg border border-border bg-background p-2 text-sm"
+                className="mt-4 w-full rounded-lg border border-white/10 bg-white/5 p-2.5 text-sm font-medium focus:border-accent/50 focus:bg-white/10 transition-all"
               >
                 {signs.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
@@ -59,14 +59,14 @@ function Compatibility() {
           ))}
         </div>
 
-        <div className="mt-6 rounded-3xl gradient-cosmic p-6 text-white shadow-glow">
-          <Heart className="h-5 w-5" />
-          <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">Match</p>
-          <p className="font-display text-5xl tabular-nums">{s}<span className="text-2xl text-white/60">%</span></p>
+        <div className="mt-8 rounded-3xl gradient-premium p-8 text-white shadow-glow">
+          <Heart className="h-6 w-6" />
+          <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-white/70">Compatibility</p>
+          <p className="font-display text-6xl font-semibold tabular-nums">{s}<span className="text-2xl text-white/60">%</span></p>
           <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/15">
-            <div className={cn("h-full bg-white transition-all duration-700")} style={{ width: `${s}%` }} />
+            <div className={cn("h-full bg-white transition-all duration-700")} style={{ width: `${s}%` }}/>
           </div>
-          <p className="mt-4 text-sm text-white/85">
+          <p className="mt-6 text-base leading-relaxed text-white/85">
             {s > 80 ? "A natural ease — you bring out each other's calm." :
              s > 60 ? "Warm chemistry with room for honest growth." :
              s > 45 ? "Different rhythms. Curiosity bridges the gap." :
