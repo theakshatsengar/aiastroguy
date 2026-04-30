@@ -36,68 +36,55 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
+  --color-cosmic: var(--cosmic);
+  --color-cosmic-glow: var(--cosmic-glow);
 
-  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.04), 0 4px 16px oklch(0 0 0 / 0.04);
-  --shadow-glow: 0 0 40px oklch(0 0 0 / 0.06);
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.4), 0 8px 32px oklch(0 0 0 / 0.32);
+  --shadow-glow: 0 0 60px oklch(0.55 0.18 265 / 0.35);
 }
 
 :root {
   --radius: 1rem;
 
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.18 0 0);
+  /* Default = dark, monochrome with deep blue accent */
+  --background: oklch(0.13 0.012 265);
+  --foreground: oklch(0.98 0 0);
 
-  --surface: oklch(0.97 0 0);
-  --surface-elevated: oklch(1 0 0);
+  --surface: oklch(0.17 0.014 265);
+  --surface-elevated: oklch(0.21 0.016 265);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0 0);
+  --card: oklch(0.18 0.014 265 / 0.6);
+  --card-foreground: oklch(0.98 0 0);
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0 0);
+  --popover: oklch(0.18 0.014 265);
+  --popover-foreground: oklch(0.98 0 0);
 
-  --primary: oklch(0.18 0 0);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: oklch(0.98 0 0);
+  --primary-foreground: oklch(0.15 0.012 265);
 
-  --secondary: oklch(0.96 0 0);
-  --secondary-foreground: oklch(0.22 0 0);
+  --secondary: oklch(0.24 0.018 265);
+  --secondary-foreground: oklch(0.98 0 0);
 
-  --muted: oklch(0.96 0 0);
-  --muted-foreground: oklch(0.5 0 0);
+  --muted: oklch(0.22 0.016 265);
+  --muted-foreground: oklch(0.66 0.012 265);
 
-  --accent: oklch(0.94 0 0);
-  --accent-foreground: oklch(0.18 0 0);
+  --accent: oklch(0.27 0.02 265);
+  --accent-foreground: oklch(0.98 0 0);
 
-  --destructive: oklch(0.55 0.2 27);
+  --destructive: oklch(0.6 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.92 0 0);
-  --input: oklch(0.92 0 0);
-  --ring: oklch(0.3 0 0);
-}
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.1);
+  --ring: oklch(0.55 0.18 265);
 
-.dark {
-  --background: oklch(0.12 0 0);
-  --foreground: oklch(0.98 0 0);
-  --surface: oklch(0.16 0 0);
-  --surface-elevated: oklch(0.2 0 0);
-  --card: oklch(0.16 0 0);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.16 0 0);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.98 0 0);
-  --primary-foreground: oklch(0.12 0 0);
-  --secondary: oklch(0.22 0 0);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.22 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.25 0 0);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 0.1);
-  --input: oklch(1 0 0 / 0.12);
-  --ring: oklch(0.7 0 0);
+  --cosmic: oklch(0.42 0.18 265);
+  --cosmic-glow: oklch(0.62 0.2 270);
+
+  --gradient-cosmic: linear-gradient(135deg, oklch(0.32 0.16 265), oklch(0.55 0.2 270) 60%, oklch(0.78 0.12 280));
+  --gradient-scan: linear-gradient(180deg, transparent, oklch(0.62 0.2 270 / 0.9), transparent);
+  --gradient-aurora: radial-gradient(120% 80% at 50% 0%, oklch(0.42 0.2 265 / 0.55), transparent 60%),
+                     radial-gradient(80% 60% at 100% 100%, oklch(0.5 0.18 290 / 0.35), transparent 60%);
 }
 
 @layer base {
@@ -112,8 +99,50 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  body {
+    background-image: var(--gradient-aurora);
+    background-attachment: fixed;
+  }
+
   .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
+
+  .glass {
+    background: oklch(1 0 0 / 0.04);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid oklch(1 0 0 / 0.08);
+  }
+
+  .glass-strong {
+    background: oklch(1 0 0 / 0.07);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid oklch(1 0 0 / 0.1);
+  }
+
+  .gradient-cosmic {
+    background-image: var(--gradient-cosmic);
+  }
+
+  .text-cosmic {
+    background: var(--gradient-cosmic);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-10%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(110%); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
