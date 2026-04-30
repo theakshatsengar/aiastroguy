@@ -80,12 +80,12 @@ function Horoscope() {
                 key={s}
                 onClick={() => setSign(s)}
                 className={cn(
-                  "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors",
-                  className={cn(
-                    "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all",
-                    : "border-border bg-card text-muted-foreground hover:text-foreground",
-                      ? "border-accent gradient-premium text-white shadow-glow"
-                      : "border-white/10 bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground",
+                  "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all",
+                  sign === s
+                    ? "border-accent gradient-premium text-white shadow-glow"
+                    : "border-white/10 bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground",
+                )}
+              >
                 <span className="text-base leading-none">{glyphs[s]}</span>
                 {s}
               </button>
@@ -94,33 +94,31 @@ function Horoscope() {
         </div>
       </div>
 
-      <section className="mt-6 px-6">
-        <div className="rounded-3xl border border-border bg-card p-6">
+      <section className="mt-8 px-6">
+        <div className="rounded-3xl card-premium p-8 border border-white/10">
           <div className="flex items-center justify-between">
-          <div className="rounded-3xl card-premium p-8 border border-white/10">
-            <div className="flex items-center justify-between">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            <span className="font-display text-3xl">{glyphs[sign]}</span>
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              {sign}
+            </p>
+            <span className="font-display text-4xl">{glyphs[sign]}</span>
           </div>
-              <span className="font-display text-4xl">{glyphs[sign]}</span>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            <p className="mt-5 font-display text-3xl font-semibold leading-snug">{r.mood}.</p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+          <p className="mt-5 font-display text-3xl font-semibold leading-snug">{r.mood}.</p>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{r.body}</p>
 
-          <div className="mt-6 space-y-3">
+          <div className="mt-8 space-y-4">
             {r.stats.map((s) => (
               <div key={s.label}>
-                <div className="mb-1.5 flex items-baseline justify-between text-xs">
-                  <span className="font-medium uppercase tracking-wider text-muted-foreground">
-                  <div className="mb-2 flex items-baseline justify-between text-xs">
-                    <span className="font-semibold uppercase tracking-widest text-muted-foreground">
-                  <span className="tabular-nums text-foreground">{s.value}</span>
+                <div className="mb-2 flex items-baseline justify-between text-xs">
+                  <span className="font-semibold uppercase tracking-widest text-muted-foreground">
+                    {s.label}
+                  </span>
+                  <span className="tabular-nums font-semibold text-accent">{s.value}</span>
                 </div>
-                <div className="h-1 overflow-hidden rounded-full bg-secondary">
+                <div className="h-2 overflow-hidden rounded-full bg-white/10">
                   <div
-                  <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                    className="h-full gradient-premium transition-all duration-700"
                     style={{ width: `${s.value}%` }}
-                      className="h-full gradient-premium transition-all duration-700"
+                  />
                 </div>
               </div>
             ))}
@@ -128,8 +126,8 @@ function Horoscope() {
         </div>
       </section>
 
-      <section className="mt-6 px-6">
-        <div className="grid grid-cols-2 gap-3">
+      <section className="mt-8 px-6 pb-12">
+        <div className="grid grid-cols-2 gap-4">
           {[
             { k: "Lucky number", v: "7" },
             { k: "Color", v: "Slate" },
@@ -138,14 +136,14 @@ function Horoscope() {
           ].map((x) => (
             <div
               key={x.k}
-              className="rounded-2xl border border-border bg-card p-4"
+              className="rounded-2xl card-premium border border-white/10 p-5 hover:border-accent/30 transition-all"
             >
-                className="rounded-2xl card-premium border border-white/10 p-5 hover:border-accent/30 transition-all"
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 {x.k}
-                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              <p className="mt-1 font-display text-xl">{x.v}</p>
+              </p>
+              <p className="mt-2 font-display text-2xl font-semibold text-accent">{x.v}</p>
             </div>
-                <p className="mt-2 font-display text-2xl font-semibold text-accent">{x.v}</p>
+          ))}
         </div>
       </section>
     </MobileShell>
