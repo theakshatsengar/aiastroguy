@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PalmRouteImport } from './routes/palm'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as HoroscopeRouteImport } from './routes/horoscope'
 import { Route as FaceRouteImport } from './routes/face'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const PalmRoute = PalmRouteImport.update({
   id: '/palm',
   path: '/palm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HoroscopeRoute = HoroscopeRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/face': typeof FaceRoute
   '/horoscope': typeof HoroscopeRoute
+  '/onboarding': typeof OnboardingRoute
   '/palm': typeof PalmRoute
   '/profile': typeof ProfileRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/face': typeof FaceRoute
   '/horoscope': typeof HoroscopeRoute
+  '/onboarding': typeof OnboardingRoute
   '/palm': typeof PalmRoute
   '/profile': typeof ProfileRoute
 }
@@ -60,21 +68,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/face': typeof FaceRoute
   '/horoscope': typeof HoroscopeRoute
+  '/onboarding': typeof OnboardingRoute
   '/palm': typeof PalmRoute
   '/profile': typeof ProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/face' | '/horoscope' | '/palm' | '/profile'
+  fullPaths: '/' | '/face' | '/horoscope' | '/onboarding' | '/palm' | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/face' | '/horoscope' | '/palm' | '/profile'
-  id: '__root__' | '/' | '/face' | '/horoscope' | '/palm' | '/profile'
+  to: '/' | '/face' | '/horoscope' | '/onboarding' | '/palm' | '/profile'
+  id:
+    | '__root__'
+    | '/'
+    | '/face'
+    | '/horoscope'
+    | '/onboarding'
+    | '/palm'
+    | '/profile'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FaceRoute: typeof FaceRoute
   HoroscopeRoute: typeof HoroscopeRoute
+  OnboardingRoute: typeof OnboardingRoute
   PalmRoute: typeof PalmRoute
   ProfileRoute: typeof ProfileRoute
 }
@@ -93,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/palm'
       fullPath: '/palm'
       preLoaderRoute: typeof PalmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/horoscope': {
@@ -123,6 +147,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FaceRoute: FaceRoute,
   HoroscopeRoute: HoroscopeRoute,
+  OnboardingRoute: OnboardingRoute,
   PalmRoute: PalmRoute,
   ProfileRoute: ProfileRoute,
 }
