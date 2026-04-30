@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PalmRouteImport } from './routes/palm'
+import { Route as HoroscopeRouteImport } from './routes/horoscope'
+import { Route as FaceRouteImport } from './routes/face'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PalmRoute = PalmRouteImport.update({
+  id: '/palm',
+  path: '/palm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoroscopeRoute = HoroscopeRouteImport.update({
+  id: '/horoscope',
+  path: '/horoscope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaceRoute = FaceRouteImport.update({
+  id: '/face',
+  path: '/face',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,72 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/face': typeof FaceRoute
+  '/horoscope': typeof HoroscopeRoute
+  '/palm': typeof PalmRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/face': typeof FaceRoute
+  '/horoscope': typeof HoroscopeRoute
+  '/palm': typeof PalmRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/face': typeof FaceRoute
+  '/horoscope': typeof HoroscopeRoute
+  '/palm': typeof PalmRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/face' | '/horoscope' | '/palm' | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/face' | '/horoscope' | '/palm' | '/profile'
+  id: '__root__' | '/' | '/face' | '/horoscope' | '/palm' | '/profile'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FaceRoute: typeof FaceRoute
+  HoroscopeRoute: typeof HoroscopeRoute
+  PalmRoute: typeof PalmRoute
+  ProfileRoute: typeof ProfileRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/palm': {
+      id: '/palm'
+      path: '/palm'
+      fullPath: '/palm'
+      preLoaderRoute: typeof PalmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/horoscope': {
+      id: '/horoscope'
+      path: '/horoscope'
+      fullPath: '/horoscope'
+      preLoaderRoute: typeof HoroscopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/face': {
+      id: '/face'
+      path: '/face'
+      fullPath: '/face'
+      preLoaderRoute: typeof FaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +121,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FaceRoute: FaceRoute,
+  HoroscopeRoute: HoroscopeRoute,
+  PalmRoute: PalmRoute,
+  ProfileRoute: ProfileRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
