@@ -12,11 +12,11 @@ export function PageHeader({
   action?: ReactNode;
 }) {
   return (
-    <header className="px-6 pt-12 pb-6">
+    <header className="px-6 pt-10 pb-6">
       <div className="flex items-start justify-between gap-4">
-        <div>
+        <div className="max-w-md">
           {eyebrow && (
-            <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
               {eyebrow}
             </p>
           )}
@@ -24,7 +24,7 @@ export function PageHeader({
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {subtitle}
             </p>
           )}

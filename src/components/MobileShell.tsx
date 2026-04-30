@@ -19,8 +19,8 @@ export function MobileShell({ children }: { children: ReactNode }) {
       <div className="relative flex w-full max-w-[480px] flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto pb-40">{children}</main>
 
-        <nav className="fixed bottom-3 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[460px] -translate-x-1/2 rounded-full glass-nav shadow-soft">
-          <ul className="flex items-center justify-around px-2 py-2">
+        <nav className="fixed bottom-3 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-[460px] -translate-x-1/2 rounded-[28px] glass-nav">
+          <ul className="flex items-center justify-around px-3 py-2.5">
             {tabs.map(({ to, label, icon: Icon }) => {
               const active =
                 to === "/" ? pathname === "/" : pathname.startsWith(to);
@@ -29,21 +29,21 @@ export function MobileShell({ children }: { children: ReactNode }) {
                   <Link
                     to={to}
                     className={cn(
-                      "flex min-w-[52px] flex-col items-center gap-0.5 rounded-full px-3 py-1.5 text-[10px] font-medium tracking-wide transition-all",
+                      "flex min-w-[56px] flex-col items-center gap-1 rounded-2xl px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] transition-colors",
                       active
-                        ? "text-white"
+                        ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground",
                     )}
                   >
                     <span
                       className={cn(
-                        "flex h-8 w-8 items-center justify-center rounded-full transition-all",
-                        active && "gradient-cosmic shadow-glow",
+                        "flex h-9 w-9 items-center justify-center rounded-full border border-transparent transition-all",
+                        active ? "nav-active" : "bg-transparent",
                       )}
                     >
                       <Icon
                         className="h-4 w-4"
-                        strokeWidth={active ? 2.2 : 1.8}
+                        strokeWidth={active ? 2 : 1.6}
                       />
                     </span>
                     <span className="uppercase tracking-[0.12em]">{label}</span>

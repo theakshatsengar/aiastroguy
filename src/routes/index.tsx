@@ -59,18 +59,22 @@ function Index() {
       />
 
       <section className="px-6">
-        <div className="relative overflow-hidden rounded-3xl gradient-cosmic p-6 text-white shadow-glow">
-          <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/15 blur-2xl" />
-          <Moon className="h-6 w-6 opacity-90" strokeWidth={1.6} />
-          <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.2em] text-white/70">
-            Today's energy
-          </p>
-          <p className="mt-2 font-display text-2xl leading-snug">
+        <div className="relative overflow-hidden rounded-[32px] glass-strong p-6">
+          <div className="absolute -right-10 -top-10 h-44 w-44 rounded-full bg-ink opacity-10 blur-3xl" />
+          <div className="flex items-center justify-between">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+              Today's energy
+            </p>
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-paper">
+              <Moon className="h-5 w-5" strokeWidth={1.6} />
+            </div>
+          </div>
+          <p className="mt-4 font-display text-2xl leading-snug text-foreground">
             A grounded day for finishing what you've started.
           </p>
           <Link
             to="/horoscope"
-            className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-white/90 hover:text-white"
+            className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-foreground hover:text-foreground/80"
           >
             Read full horoscope <ArrowUpRight className="h-4 w-4" />
           </Link>
@@ -88,14 +92,14 @@ function Index() {
               to={to}
               className="group flex flex-col items-center justify-between rounded-2xl glass p-5 transition-colors hover:bg-accent/40 aspect-square"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-paper">
                 <Icon className="h-6 w-6" strokeWidth={1.6} />
               </div>
-              <div className="text-center mt-3">
+              <div className="mt-3 text-center">
                 <p className="font-display text-base leading-tight">{title}</p>
-                <p className="text-xs text-muted-foreground mt-1">{desc}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{desc}</p>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 mt-2" />
+              <ArrowUpRight className="mt-2 h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           ))}
         </div>
@@ -106,7 +110,7 @@ function Index() {
           Recent
         </h2>
         {readings.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-border p-6 text-center">
+          <div className="rounded-2xl glass p-6 text-center">
             <p className="text-sm text-muted-foreground">
               Your past readings will appear here.
             </p>
@@ -118,7 +122,7 @@ function Index() {
                 {r.thumbnail ? (
                   <img src={r.thumbnail} alt="" className="h-12 w-12 rounded-xl object-cover" />
                 ) : (
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-ink text-paper">
                     {r.kind === "palm" ? <Hand className="h-5 w-5" /> : <Sparkles className="h-5 w-5" />}
                   </div>
                 )}

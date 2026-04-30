@@ -127,7 +127,7 @@ function Profile() {
                 {r.thumbnail ? (
                   <img src={r.thumbnail} alt="" className="h-16 w-16 rounded-xl object-cover" />
                 ) : (
-                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-secondary">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-ink text-paper">
                     {r.kind === "palm" ? <Hand className="h-5 w-5" /> : <Sparkles className="h-5 w-5" />}
                   </div>
                 )}

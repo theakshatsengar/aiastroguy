@@ -51,7 +51,7 @@ function Compatibility() {
               <select
                 value={val}
                 onChange={(e) => setVal(e.target.value)}
-                className="mt-3 w-full rounded-lg border border-border bg-background p-2 text-sm"
+                className="mt-3 w-full rounded-lg border border-border bg-card p-2 text-sm"
               >
                 {signs.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>

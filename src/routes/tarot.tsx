@@ -37,17 +37,19 @@ function Tarot() {
       />
 
       <div className="px-6">
-        <div className="relative mx-auto aspect-[3/5] w-full max-w-[280px] overflow-hidden rounded-3xl gradient-cosmic p-6 text-white shadow-glow">
-          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/20 blur-2xl" />
-          <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-cosmic-glow/40 blur-2xl" />
+        <div className="relative mx-auto aspect-[3/5] w-full max-w-[280px] overflow-hidden rounded-3xl glass-strong p-6">
+          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-ink opacity-10 blur-2xl" />
+          <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-ink opacity-10 blur-2xl" />
           <div className="relative flex h-full flex-col items-center justify-between text-center">
-            <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/70">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
               Today
             </p>
-            <p className="font-display text-7xl">{card.glyph}</p>
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-ink text-paper">
+              <p className="font-display text-6xl">{card.glyph}</p>
+            </div>
             <div>
               <p className="font-display text-2xl">{card.name}</p>
-              <p className="mt-2 text-xs text-white/80">{card.body}</p>
+              <p className="mt-2 text-xs text-muted-foreground">{card.body}</p>
             </div>
           </div>
         </div>
