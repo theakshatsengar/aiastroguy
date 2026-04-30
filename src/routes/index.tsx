@@ -59,29 +59,26 @@ function Index() {
       />
 
       <section className="px-6">
-        <div className="relative overflow-hidden rounded-3xl gradient-cosmic p-8 text-white shadow-glow">
-          <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute -left-16 -bottom-16 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
-          <div className="relative z-10">
-            <Moon className="h-7 w-7 opacity-90" strokeWidth={1.6} />
-            <p className="mt-7 text-xs font-semibold uppercase tracking-widest text-white/70">
-              Today's cosmic energy
-            </p>
-            <p className="mt-3 font-display text-3xl leading-snug font-semibold">
-              A grounded day for finishing what you've started.
-            </p>
-            <Link
-              to="/horoscope"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/95 hover:text-white transition-all group"
-            >
-              Read full horoscope <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </Link>
-          </div>
+        <div className="relative overflow-hidden rounded-3xl gradient-cosmic p-6 text-white shadow-glow">
+          <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/15 blur-2xl" />
+          <Moon className="h-6 w-6 opacity-90" strokeWidth={1.6} />
+          <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.2em] text-white/70">
+            Today's energy
+          </p>
+          <p className="mt-2 font-display text-2xl leading-snug">
+            A grounded day for finishing what you've started.
+          </p>
+          <Link
+            to="/horoscope"
+            className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-white/90 hover:text-white"
+          >
+            Read full horoscope <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
-      <section className="mt-12 px-6">
-        <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+      <section className="mt-8 px-6">
+        <h2 className="mb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Readings
         </h2>
         <div className="grid grid-cols-2 gap-4">
@@ -89,47 +86,48 @@ function Index() {
             <Link
               key={to}
               to={to}
-              className="group flex flex-col items-center justify-between rounded-2xl card-premium p-6 transition-all duration-300 hover:shadow-glow aspect-square border border-white/10 hover:border-accent/30"
+              className="group flex flex-col items-center justify-between rounded-2xl glass p-5 transition-colors hover:bg-accent/40 aspect-square"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 group-hover:from-accent/30 group-hover:to-accent/10 transition-all">
-                <Icon className="h-7 w-7 text-accent" strokeWidth={1.6} />
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary">
+                <Icon className="h-6 w-6" strokeWidth={1.6} />
               </div>
-              <div className="text-center mt-4">
-                <p className="font-display text-lg leading-tight font-semibold text-foreground">{title}</p>
-                <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{desc}</p>
+              <div className="text-center mt-3">
+                <p className="font-display text-base leading-tight">{title}</p>
+                <p className="text-xs text-muted-foreground mt-1">{desc}</p>
               </div>
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 mt-2" />
             </Link>
           ))}
         </div>
       </section>
 
       <section className="mt-8 px-6 pb-12">
-        <h2 className="mb-6 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+        <h2 className="mb-3 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
           Recent
         </h2>
         {readings.length === 0 ? (
-          <div className="rounded-2xl border border-border p-8 text-center card-premium">
+          <div className="rounded-2xl border border-dashed border-border p-6 text-center">
             <p className="text-sm text-muted-foreground">
               Your past readings will appear here.
             </p>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-2">
             {readings.slice(0, 3).map((r) => (
-              <div key={r.id} className="flex items-center gap-4 rounded-2xl card-premium p-4 transition-all hover:shadow-soft border border-white/5">
+              <div key={r.id} className="flex items-center gap-3 rounded-2xl glass p-3">
                 {r.thumbnail ? (
-                  <img src={r.thumbnail} alt="" className="h-14 w-14 rounded-xl object-cover" />
+                  <img src={r.thumbnail} alt="" className="h-12 w-12 rounded-xl object-cover" />
                 ) : (
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-accent/20 to-accent/5">
-                    {r.kind === "palm" ? <Hand className="h-6 w-6 text-accent" /> : <Sparkles className="h-6 w-6 text-accent" />}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary">
+                    {r.kind === "palm" ? <Hand className="h-5 w-5" /> : <Sparkles className="h-5 w-5" />}
                   </div>
                 )}
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold text-foreground capitalize">{r.kind} reading</p>
+                  <p className="truncate text-sm font-medium capitalize">{r.kind} reading</p>
                   <p className="truncate text-xs text-muted-foreground">{r.title}</p>
                 </div>
-                <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <Clock className="h-3.5 w-3.5" />
+                <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                  <Clock className="h-3 w-3" />
                   {timeAgo(r.createdAt)}
                 </span>
               </div>

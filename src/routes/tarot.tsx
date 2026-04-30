@@ -37,30 +37,29 @@ function Tarot() {
       />
 
       <div className="px-6">
-        <div className="relative mx-auto aspect-[3/5] w-full max-w-[280px] overflow-hidden rounded-3xl gradient-cosmic p-8 text-white shadow-glow">
+        <div className="relative mx-auto aspect-[3/5] w-full max-w-[280px] overflow-hidden rounded-3xl gradient-cosmic p-6 text-white shadow-glow">
           <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/20 blur-2xl" />
           <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-cosmic-glow/40 blur-2xl" />
           <div className="relative flex h-full flex-col items-center justify-between text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/70">
+            <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/70">
               Today
             </p>
             <p className="font-display text-7xl">{card.glyph}</p>
             <div>
-              <p className="font-display text-3xl font-semibold">{card.name}</p>
-              <p className="mt-3 text-sm leading-relaxed text-white/80">{card.body}</p>
+              <p className="font-display text-2xl">{card.name}</p>
+              <p className="mt-2 text-xs text-white/80">{card.body}</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 px-6">
-          <Button
-            variant="outline"
-            onClick={() => setSeed((s) => s + 1)}
-            className="mx-auto flex h-12 rounded-full font-semibold border-white/10 hover:bg-white/5"
-          >
-            <RefreshCw className="mr-2 h-4 w-4" /> Draw another
-          </Button>
-        </div>
+        <Button
+          variant="outline"
+          size="lg"
+          onClick={() => setSeed((s) => s + 1)}
+          className="mx-auto mt-6 flex h-12 rounded-full"
+        >
+          <RefreshCw className="mr-2 h-4 w-4" /> Draw another
+        </Button>
       </div>
     </MobileShell>
   );

@@ -40,26 +40,26 @@ function Profile() {
         <section className="px-6">
           <Link
             to="/onboarding"
-            className="block rounded-3xl card-premium p-8 text-center border border-white/10 hover:border-accent/30 transition-all"
+            className="block rounded-3xl glass p-6 text-center"
           >
-            <p className="font-display text-2xl font-semibold">Set up your profile</p>
-            <p className="mt-2 text-base text-muted-foreground">Tell us when you were born.</p>
+            <p className="font-display text-lg">Set up your profile</p>
+            <p className="mt-1 text-sm text-muted-foreground">Tell us when you were born.</p>
           </Link>
         </section>
       ) : (
         <>
           <section className="px-6">
-            <div className="flex items-center gap-4 rounded-3xl card-premium p-6 border border-white/10">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full gradient-premium font-display text-3xl text-white shadow-glow">
+            <div className="flex items-center gap-4 rounded-3xl glass p-5">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full gradient-cosmic font-display text-2xl text-white shadow-glow">
                 {glyphs[profile.sunSign ?? "Aries"]}
               </div>
               <div className="flex-1">
-                <p className="font-display text-xl font-semibold leading-tight">{profile.name}</p>
+                <p className="font-display text-lg leading-tight">{profile.name}</p>
                 <p className="text-sm text-muted-foreground">
                   {profile.sunSign} Sun {profile.birthPlace ? `· ${profile.birthPlace}` : ""}
                 </p>
               </div>
-              <Link to="/onboarding" className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors">
+              <Link to="/onboarding" className="text-sm text-muted-foreground hover:text-foreground">
                 Edit
               </Link>
             </div>
@@ -72,11 +72,11 @@ function Profile() {
                 { k: "Place", v: profile.birthPlace || "—" },
                 { k: "Time", v: profile.birthTime || "—" },
               ].map((x) => (
-                <div key={x.k} className="rounded-2xl card-premium p-5 text-center border border-white/10 hover:border-accent/30 transition-all">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                <div key={x.k} className="rounded-2xl glass p-4 text-center">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                     {x.k}
                   </p>
-                  <p className="mt-2 truncate font-display text-lg font-semibold text-accent">{x.v}</p>
+                  <p className="mt-1 truncate font-display text-base">{x.v}</p>
                 </div>
               ))}
             </div>
@@ -88,14 +88,14 @@ function Profile() {
         <section className="mt-6 px-6">
           <button
             onClick={() => setPaywall(true)}
-            className="relative w-full overflow-hidden rounded-3xl gradient-premium p-7 text-left text-white shadow-glow hover:shadow-glow transition-all"
+            className="relative w-full overflow-hidden rounded-3xl gradient-cosmic p-5 text-left text-white shadow-glow"
           >
             <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/15 blur-2xl" />
             <div className="flex items-center gap-3">
               <Crown className="h-5 w-5" />
-              <p className="font-display text-xl font-semibold">Unlock Lumen Pro</p>
+              <p className="font-display text-lg">Unlock Lumen Pro</p>
             </div>
-            <p className="mt-2 text-base text-white/80">
+            <p className="mt-1 text-sm text-white/80">
               Unlimited readings & full chart · ₹99 lifetime
             </p>
           </button>
