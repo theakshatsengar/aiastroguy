@@ -26,8 +26,8 @@ export function Paywall({
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/70 backdrop-blur-md animate-in fade-in sm:items-center">
-      <div className="relative w-full max-w-[480px] overflow-hidden rounded-t-3xl glass-strong p-6 pb-8 shadow-soft animate-in slide-in-from-bottom-8 sm:rounded-3xl">
+    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 backdrop-blur-md animate-in fade-in sm:items-center">
+      <div className="relative w-full max-w-[480px] overflow-hidden rounded-t-3xl border border-border bg-surface-elevated p-6 pb-8 shadow-soft animate-in slide-in-from-bottom-8 sm:rounded-3xl">
         <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-cosmic-glow/40 blur-3xl" />
         <button
           onClick={onClose}
@@ -63,7 +63,7 @@ export function Paywall({
             ))}
           </ul>
 
-          <div className="mt-6 rounded-2xl glass p-5 text-center">
+          <div className="mt-6 rounded-2xl border border-border bg-card p-5 text-center">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Lifetime access
             </p>

@@ -80,10 +80,10 @@ function Horoscope() {
                 key={s}
                 onClick={() => setSign(s)}
                 className={cn(
-                  "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors",
+                  "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors",
                   sign === s
                     ? "border-foreground bg-foreground text-background"
-                    : "border-border bg-transparent text-muted-foreground hover:text-foreground",
+                    : "border-border bg-card text-muted-foreground hover:text-foreground",
                 )}
               >
                 <span className="text-base leading-none">{glyphs[s]}</span>
@@ -95,7 +95,7 @@ function Horoscope() {
       </div>
 
       <section className="mt-6 px-6">
-        <div className="rounded-3xl glass p-6">
+        <div className="rounded-3xl border border-border bg-card p-6">
           <div className="flex items-center justify-between">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
               {sign}
@@ -138,7 +138,7 @@ function Horoscope() {
           ].map((x) => (
             <div
               key={x.k}
-              className="rounded-2xl glass p-4"
+              className="rounded-2xl border border-border bg-card p-4"
             >
               <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 {x.k}

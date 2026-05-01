@@ -85,7 +85,7 @@ function Onboarding() {
 
         <div className="flex flex-1 flex-col justify-center">
           {step < 3 ? (
-            <div key={step} className="animate-in fade-in slide-in-from-bottom-4 rounded-3xl glass p-6">
+            <div key={step} className="animate-in fade-in slide-in-from-bottom-4">
               <div className="mb-8 inline-flex h-16 w-16 items-center justify-center rounded-3xl gradient-cosmic shadow-glow">
                 {(() => {
                   const I = steps[step].icon;
@@ -100,7 +100,7 @@ function Onboarding() {
               </p>
             </div>
           ) : (
-            <div className="animate-in fade-in slide-in-from-bottom-4 rounded-3xl glass p-6 space-y-5">
+            <div className="animate-in fade-in slide-in-from-bottom-4 space-y-5">
               <h1 className="font-display text-4xl leading-[1.05]">Your details</h1>
               <p className="text-sm text-muted-foreground">
                 Used only on this device. Nothing is uploaded.
@@ -112,7 +112,7 @@ function Onboarding() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your name"
-                    className="h-12 border-border bg-card"
+                    className="h-12 rounded-xl border-border bg-card"
                   />
                 </Field>
                 <Field label="Birth date">
@@ -120,7 +120,7 @@ function Onboarding() {
                     type="date"
                     value={birthDate}
                     onChange={(e) => setBirthDate(e.target.value)}
-                    className="h-12 border-border bg-card"
+                    className="h-12 rounded-xl border-border bg-card"
                   />
                 </Field>
                 <div className="grid grid-cols-2 gap-3">
@@ -129,7 +129,7 @@ function Onboarding() {
                       type="time"
                       value={birthTime}
                       onChange={(e) => setBirthTime(e.target.value)}
-                      className="h-12 border-border bg-card"
+                      className="h-12 rounded-xl border-border bg-card"
                     />
                   </Field>
                   <Field label="Place">
@@ -137,7 +137,7 @@ function Onboarding() {
                       value={birthPlace}
                       onChange={(e) => setBirthPlace(e.target.value)}
                       placeholder="City"
-                      className="h-12 border-border bg-card"
+                      className="h-12 rounded-xl border-border bg-card"
                     />
                   </Field>
                 </div>
