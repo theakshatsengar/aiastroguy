@@ -26,7 +26,7 @@ export function Paywall({
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 backdrop-blur-md animate-in fade-in sm:items-center">
+    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-foreground/30 backdrop-blur-md animate-in fade-in sm:items-center">
       <div className="relative w-full max-w-[480px] overflow-hidden rounded-t-3xl border border-border bg-surface-elevated p-6 pb-8 shadow-soft animate-in slide-in-from-bottom-8 sm:rounded-3xl">
         <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-cosmic-glow/40 blur-3xl" />
         <button
