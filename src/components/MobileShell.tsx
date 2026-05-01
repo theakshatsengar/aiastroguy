@@ -30,15 +30,13 @@ export function MobileShell({ children }: { children: ReactNode }) {
                     to={to}
                     className={cn(
                       "flex min-w-[52px] flex-col items-center gap-0.5 rounded-full px-3 py-1.5 text-[10px] font-medium tracking-wide transition-all",
-                      active
-                        ? "text-white"
-                        : "text-muted-foreground hover:text-foreground",
+                      active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
                     <span
                       className={cn(
-                        "flex h-8 w-8 items-center justify-center rounded-full transition-all",
-                        active && "gradient-cosmic shadow-glow",
+                        "flex h-9 w-9 items-center justify-center rounded-full transition-all",
+                        active ? "bg-primary text-primary-foreground" : "text-foreground",
                       )}
                     >
                       <Icon
